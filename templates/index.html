@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Vérificateur de Mot de Passe CNIL</title>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Vérificateur de Mot de Passe</h1>
+        <form method="post">
+            <input type="password" name="password" placeholder="Mot de passe" required>
+            <button type="submit">Vérifier</button>
+        </form>
+        {% if restrictions %}
+            {% if restrictions|length > 0 %}
+                <ul class="error">
+                {% for restriction in restrictions %}
+                    <li>{{ restriction }}</li>
+                {% endfor %}
+                </ul>
+            {% else %}
+                <p class="success">Le mot de passe respecte les critères CNIL.</p>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
+
+
+
+
